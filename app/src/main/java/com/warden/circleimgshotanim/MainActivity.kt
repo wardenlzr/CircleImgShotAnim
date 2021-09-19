@@ -2,20 +2,21 @@ package com.warden.circleimgshotanim
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.Activity
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initCircleImg(iv)
         initShotAnim(iv)
     }
+
     /**
      * 呼吸动画
      */
@@ -34,7 +35,8 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initCircleImg(iv: ImageView) {
         val src = BitmapFactory.decodeResource(resources, R.drawable.sylm); //获取Bitmap图片
-        val bitmapDrawable = RoundedBitmapDrawableFactory.create(resources, src); //创建RoundedBitmapDrawable对象
+        val bitmapDrawable =
+            RoundedBitmapDrawableFactory.create(resources, src); //创建RoundedBitmapDrawable对象
         bitmapDrawable.isCircular = true
         bitmapDrawable.setAntiAlias(true); //设置抗锯齿
         iv.setImageDrawable(bitmapDrawable); //显示圆角
